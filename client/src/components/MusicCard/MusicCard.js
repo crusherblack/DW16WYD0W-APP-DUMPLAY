@@ -13,6 +13,7 @@ const MusicCard = ({
   },
   setPlayIndex,
   index,
+  playIndex,
 }) => {
   const text_truncate = (str, length, ending) => {
     if (length == null) {
@@ -30,7 +31,7 @@ const MusicCard = ({
 
   return (
     <div className="card-backround">
-      <div className="playIcon">
+      <div className={`playIcon${index === playIndex ? " current" : " "}`}>
         <img
           src={playIcon}
           alt="playIcon"

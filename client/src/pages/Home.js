@@ -37,6 +37,7 @@ const Home = ({ getMusicAll, music: { musicAll, loading } }) => {
         title="Dengarkan dan Rasakan"
         films={musicAll}
         setPlayIndex={setPlayIndex}
+        playIndex={playIndex}
       />
       <MusicPlayer musicAll={musicAll} playIndex={playIndex} />
     </div>
