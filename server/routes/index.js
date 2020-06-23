@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 
 const { upload } = require('../middleware/uploadMp3');
+const { uploadImage } = require('../middleware/uploadImage');
 
 const { auth, authAdmin } = require('../middleware/auth');
 
@@ -36,7 +37,14 @@ router.post('/artist', auth, authAdmin, addArtist);
 // Music Routes
 router.get('/music', getMusic);
 router.get('/music/:id', auth, getDetailMusic);
-router.post('/music', auth, authAdmin, addMusic);
+router.post(
+	'/music',
+	auth,
+	authAdmin,
+	upload('attache'),
+	uploadImage('thumbnail'),
+	addMusic
+);
 
 // Transcation Routes
 router.get('/transaction', getTransaction);

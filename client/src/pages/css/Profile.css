@@ -45,7 +45,7 @@
 }
 
 .profile-icon {
-	color: #e50914;
+	color: #EE4622;
 	font-size: 35px;
 	width: 45px;
 }
@@ -69,14 +69,14 @@
 	height: 60px;
 	margin-top: 15px;
 	font-size: 1.3rem;
-	background: #e50914;
-	border: 1px solid #e50914;
+	background: #EE4622;
+	border: 1px solid #EE4622;
 	border-radius: 5px;
 	color: #ffffff;
 	cursor: pointer;
 }
 
 .profile-button:hover {
-	background: #8b040b;
-	border: 1px solid #8b040b;
+	background: #df340d;
+	border: 1px solid #df340d;
 }

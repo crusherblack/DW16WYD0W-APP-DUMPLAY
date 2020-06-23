@@ -11,14 +11,18 @@ import PropTypes from 'prop-types';
 import HomeSkeleton from '../components/Skeleton/HomeSkeleton';
 import Loader from '../components/Loader/Loader';
 
-const Home = ({ getMusicAll, music: { musicAll, loading } }) => {
+const Home = ({
+	getMusicAll,
+	music: { musicAll, loading },
+	auth: { isAuthenticated }
+}) => {
 	const [ playIndex, setPlayIndex ] = useState(0);
 	const [ loadingSkeleton, setLoadingSkeleton ] = useState(true);
 
 	useEffect(() => {
 		const timer = setTimeout(() => {
 			setLoadingSkeleton(false);
-		}, 1200);
+		}, 1000);
 
 		return () => clearTimeout(timer);
 	}, []);
@@ -43,11 +47,13 @@ const Home = ({ getMusicAll, music: { musicAll, loading } }) => {
 				setPlayIndex={setPlayIndex}
 				playIndex={playIndex}
 			/>
-			<MusicPlayer
-				musicAll={musicAll}
-				playIndex={playIndex}
-				setPlayIndex={setPlayIndex}
-			/>
+			{isAuthenticated && (
+				<MusicPlayer
+					musicAll={musicAll}
+					playIndex={playIndex}
+					setPlayIndex={setPlayIndex}
+				/>
+			)}
 		</div>
 	);
 };
@@ -59,7 +65,8 @@ Home.propTypes = {
 };
 
 const mapStateToProps = (state) => ({
-	music: state.music
+	music: state.music,
+	auth: state.auth
 });
 
 export default connect(mapStateToProps, { getMusicAll })(Home);

@@ -14,8 +14,9 @@ import Home from './pages/Home';
 import Profile from './pages/Profile';
 import Payment from './pages/Payment';
 import Transaction from './pages/IncomingTransaction';
-import ListMovie from './pages/Movie/ListMovie';
-import AddMovie from './pages/Movie/AddMovie';
+
+import AddMusik from './pages/Crud/AddMusic';
+import AddArtist from './pages/Crud/AddArtist';
 
 import PrivateAdminRoute from './components/Routing/PrivateAdminRoute';
 import PrivateRoute from './components/Routing/PrivateRoute';
@@ -71,13 +72,13 @@ function App() {
 							/>
 							<PrivateAdminRoute
 								exact
-								path="/movie-list"
-								component={ListMovie}
+								path="/add-music"
+								component={AddMusik}
 							/>
 							<PrivateAdminRoute
 								exact
-								path="/add-movie"
-								component={AddMovie}
+								path="/add-artist"
+								component={AddArtist}
 							/>
 
 							<Route component={NotFound} />

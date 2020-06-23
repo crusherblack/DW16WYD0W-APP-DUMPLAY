@@ -62,16 +62,16 @@ body {
   width: 100%;
   height: 40px;
   font-size: 1.2rem;
-  background: #e50914;
-  border: 1px solid #e50914;
+  background: #EE4622;
+  border: 1px solid #EE4622;
   border-radius: 5px;
   color: #ffffff;
   cursor: pointer;
 }
 
 .btn-merah:hover {
-  background: #8b040b;
-  border: 1px solid #8b040b;
+  background: #e9370f;
+  border: 1px solid #e9370f;
 }
 
 .custom-select {
