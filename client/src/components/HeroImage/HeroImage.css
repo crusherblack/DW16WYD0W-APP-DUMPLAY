@@ -12,6 +12,7 @@
   from {
     opacity: 0;
   }
+
   to {
     opacity: 1;
   }
@@ -19,7 +20,7 @@
 
 .hero-content {
   width: 100%;
-  padding: 20px;
+
   margin: 0;
 }
 
@@ -47,50 +48,4 @@
   line-height: 26px;
   color: #ffffff;
   text-align: center;
-}
-
-@media screen and (max-width: 720px) {
-  .hero-text {
-    max-width: 100%;
-  }
-
-  .hero-text h1 {
-    font-size: 38px;
-    color: #ffffff;
-  }
-
-  .hero-text p {
-    font-size: 16px;
-    line-height: 20px;
-    color: #ffffff;
-  }
-
-  .logohero {
-    max-width: 100%;
-    max-height: 100%;
-  }
-}
-
-@media (min-width: 480px) {
-  .hero {
-    height: 600px;
-  }
-}
-
-@media (min-width: 1366px) {
-  .hero {
-    height: 768px;
-  }
-}
-
-@media (min-width: 1440px) {
-  .hero {
-    height: 800px;
-  }
-}
-
-@media (min-width: 1800px) {
-  .hero {
-    height: 918px;
-  }
 }
