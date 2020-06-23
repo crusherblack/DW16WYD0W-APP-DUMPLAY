@@ -155,7 +155,7 @@ const AddMovie = ({ getArtistAll, add_Music, music: { artisAll, loading } }) => 
 					</div>
 					<div className="form-group">
 						<input
-							type="number"
+							type="text"
 							className="custom-input"
 							placeholder="Link Music"
 							onChange={(e) => onChange(e)}
@@ -180,7 +180,7 @@ const AddMovie = ({ getArtistAll, add_Music, music: { artisAll, loading } }) => 
 				</div>
 			</form>
 			<div className="preview-container">
-				<h1>Thumbnail Film</h1>
+				<h1>Thumbnail Music</h1>
 				<img src={previewSrc} className="preview-film" />
 			</div>
 		</div>
