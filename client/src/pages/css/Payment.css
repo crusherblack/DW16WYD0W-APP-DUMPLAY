@@ -1,0 +1,43 @@
+.payment-container {
+  display: flex;
+  margin-top: 130px;
+  color: white;
+}
+
+.payment-details {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40%;
+  padding: 0 30%;
+}
+
+.payment-desc {
+  text-align: center;
+  display: inline-block;
+}
+
+.payment-desc p {
+  font-size: 20px;
+}
+
+.red {
+  color: #e50914;
+  font-weight: bold;
+}
+
+.form-payment {
+  padding: 0 25%;
+}
+
+.preview-src {
+  margin-top: 20px;
+  width: 100%;
+}
+
+@media (max-width: 758px) {
+  .payment-details {
+    width: 100%;
+    padding: 0 0;
+  }
+}

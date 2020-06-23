@@ -1,0 +1,113 @@
+.description-container {
+  font-family: "Muli", sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 45vh;
+  margin: 0;
+  width: 60%;
+  color: white;
+}
+
+.episode-container {
+  font-family: "Muli", sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 45vh;
+  margin: 0;
+  width: 40%;
+  color: white;
+}
+
+.movie {
+  display: flex;
+  max-width: 100%;
+  margin: 20px;
+  overflow: hidden;
+  width: 700px;
+}
+
+@media (max-width: 768px) {
+  .movie {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .play-now {
+    width: 100%;
+  }
+
+  .description-container {
+    width: 100%;
+  }
+
+  .episode-container {
+    width: 100%;
+  }
+}
+
+.movie-description {
+  text-transform: capitalize;
+  display: inline-block;
+  padding: 0 20px;
+}
+
+.year {
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.tipe {
+  border: 1px solid #ffffff;
+  padding: 5px 5px;
+  border-radius: 5px;
+}
+
+.play-now {
+  flex-direction: column;
+  display: flex;
+  max-width: 100%;
+  margin: 20px;
+  overflow: hidden;
+  width: 500px;
+  position: relative;
+}
+
+.description {
+  margin-top: 40px;
+  font-size: 17px;
+}
+
+.img-play-now {
+  position: absolute;
+  top: 40%;
+  align-self: center;
+  color: white;
+}
+
+.arrow-right {
+  position: absolute;
+  right: 2%;
+  top: 40%;
+  font-size: 30px;
+  align-self: center;
+  color: #e50914;
+}
+
+.icon-play {
+  position: absolute;
+  top: 33%;
+  font-size: 70px;
+  align-self: center;
+  color: #e50914;
+  z-index: 1;
+
+}
+
+
+.icon-play:hover {
+  cursor: pointer;
+  opacity: 0.8;
+
+}

@@ -1,0 +1,115 @@
+.navbar {
+	background-color: #1f1f1f;
+	overflow: hidden;
+	height: 70px;
+	z-index: 1000;
+	-webkit-box-shadow: 0 8px 6px -6px black;
+	-moz-box-shadow: 0 8px 6px -6px black;
+	box-shadow: 0 8px 6px -6px black;
+	position: fixed;
+	top: 0;
+	width: 100%;
+}
+
+a {
+	display: none;
+}
+
+.profile {
+	display: none;
+}
+
+.button-login-register {
+	display: none;
+}
+
+@media only screen and (min-width: 600px) {
+	.navbar a {
+		float: left;
+		color: #f2f2f2;
+		text-align: center;
+		padding-top: 27px;
+		padding-left: 40px;
+		text-decoration: none;
+		font-size: 14px;
+		color: #ffffff;
+		font-weight: 600;
+		display: flex;
+		align-items: center;
+		text-align: center;
+		cursor: pointer;
+	}
+
+	.navbar a:hover {
+		color: #d8d8d8;
+	}
+
+	.profile {
+		position: absolute;
+		right: 27px;
+		display: block;
+		margin-top: 12px;
+	}
+
+	.profile img {
+		width: 40px;
+		height: 40px;
+		border: 2px solid #ffffff;
+		border-radius: 50px;
+		cursor: pointer;
+	}
+
+	.button-login-register {
+		position: absolute;
+		right: 2%;
+		display: block;
+		top: 23%;
+	}
+}
+
+.logo {
+	position: absolute;
+	left: 50%;
+	margin-left: -50px !important;
+	display: block;
+	top: 17px;
+}
+
+.btn-light {
+	width: 100px;
+	height: 30px;
+	font-weight: bold;
+	font-size: 14px;
+	background: #ffffff;
+	border: 1px solid #ffffff;
+	border-radius: 5px;
+	color: #e50914;
+	cursor: pointer;
+	margin-top: 4px;
+	display: inline-block;
+	margin-right: 15px;
+}
+
+.btn-light:hover {
+	background: #ffffff;
+	border: 1px solid #360204;
+}
+
+.btn-red {
+	width: 100px;
+	height: 30px;
+	font-weight: bold;
+	font-size: 14px;
+	background: #e50914;
+	border: 1px solid #e50914;
+	border-radius: 5px;
+	color: #ffffff;
+	cursor: pointer;
+	margin-top: 4px;
+	display: inline-block;
+}
+
+.btn-red:hover {
+	background: #e50914;
+	border: 1px solid #ffffff;
+}

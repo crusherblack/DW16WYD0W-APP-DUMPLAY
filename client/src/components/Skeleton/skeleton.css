@@ -1,0 +1,98 @@
+.skeleton-container {
+    margin-left: 8%;
+    margin-right: 8%;
+}
+
+.skeleton-description-container {
+    margin-left: 8%;
+    margin-right: 8%;
+    display: flex;
+}
+
+.skeleton-container ul {
+    padding-inline-start: 0;
+}
+
+.skeleton-hero {
+    margin-top: 90px;
+    width: 100%;
+    height: 800px;
+}
+
+.skeleton-description {
+    margin-top: 20px;
+    display: flex;
+    min-height: 45vh;
+    width: 60%;
+}
+
+.skeleton-episode {
+    margin-top: 20px;
+    display: flex;
+    min-height: 45vh;
+    width: 40%;
+}
+
+
+.skeleton-description .desc-right p {
+    margin-top: 0px;
+    margin-bottom: 10px;
+}
+
+
+
+.skeleton-video {
+    margin-top: 90px;
+    width: 100%;
+    height: 500px;
+}
+
+
+.skeleton-list {
+    display: grid;
+    gap: 1.7rem;
+    grid-template-columns: repeat(6, 1fr);
+}
+
+.skeleton-title {
+    margin-top: 30px;
+}
+
+.card-link {
+    color: inherit;
+    text-decoration: none;
+}
+
+.card-image {
+    width: 100%;
+}
+
+.card-title {
+    margin-top: 10px;
+    margin-bottom: 0;
+}
+
+.card-channel {
+    margin-top: 5px;
+    margin-bottom: 5px;
+    font-size: 14px;
+}
+
+
+@media screen and (max-width: 1360px) {
+    .skeleton-list {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .skeleton-list {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media screen and (max-width: 375px) {
+    .skeleton-list {
+        grid-template-columns: repeat(1, 1fr);
+    }
+}

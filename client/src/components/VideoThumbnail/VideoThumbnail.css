@@ -1,0 +1,30 @@
+.player-wrapper {
+  position: relative;
+  padding-top: 30%;
+  /* Player ratio: 100 / (1280 / 720) */
+}
+
+.react-player {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.video-image {
+  background-size: 100%, cover !important;
+  background-position: center, center !important;
+  position: relative;
+  background-size: cover;
+  cursor: pointer;
+}
+
+.video-image:hover {
+  opacity: 0.9;
+}
+
+
+@media (max-width: 700px) {
+  .player-wrapper {
+    padding-top: 70%;
+  }
+}

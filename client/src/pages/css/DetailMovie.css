@@ -1,0 +1,19 @@
+.details {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 10%;
+}
+
+@media (max-width: 768px) {
+  .details {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 2%;
+  }
+}
+
+.pointer {
+  cursor: pointer;
+  font-size: 20px;
+  text-decoration: underline;
+}
