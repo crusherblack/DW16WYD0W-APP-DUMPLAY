@@ -10,7 +10,7 @@ exports.upload = (fileName) => {
 		}
 	});
 
-	const imageFilter = function(req, file, cb) {
+	const filter = function(req, file, cb) {
 		if (!file.originalname.match(/\.(mp3|MP3)$/)) {
 			req.fileValidationError = {
 				message: 'Only image files are allowed!'
@@ -20,11 +20,11 @@ exports.upload = (fileName) => {
 		cb(null, true);
 	};
 
-	const maxSize = 2 * 1000 * 1000;
+	const maxSize = 10 * 1000 * 1000;
 
 	const upload = multer({
 		storage,
-		fileFilter: imageFilter,
+		fileFilter: filter,
 		limits: {
 			fileSize: maxSize
 		}
@@ -37,13 +37,13 @@ exports.upload = (fileName) => {
 
 			if (!req.file && !err)
 				return res.status(400).send({
-					message: 'Please select an image to upload'
+					message: 'Please select an music file to upload'
 				});
 
 			if (err) {
 				if (err.code === 'LIMIT_FILE_SIZE') {
 					return res.status(400).send({
-						message: 'Max file sized 2MB'
+						message: 'Max file sized 10MB'
 					});
 				}
 				return res.status(400).send(err);
