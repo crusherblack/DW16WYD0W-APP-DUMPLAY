@@ -4,12 +4,15 @@ import {
 	ADD_ARTIST_SUCCESS,
 	ADD_ARTIST_FAIL,
 	ADD_MUSIC_SUCCESS,
-	ADD_MUSIC_FAIL
+	ADD_MUSIC_FAIL,
+	GET_ARTIS_ALL,
+	GET_ARTIS_FAIL
 } from '../actions/types';
 
 const initialState = {
 	loading: true,
 	musicAll: [],
+	artisAll: [],
 	error: ''
 };
 
@@ -21,6 +24,12 @@ export default function(state = initialState, actions) {
 			return {
 				...state,
 				musicAll: payload,
+				loading: false
+			};
+		case GET_ARTIS_ALL:
+			return {
+				...state,
+				artisAll: payload,
 				loading: false
 			};
 		case ADD_ARTIST_SUCCESS:
@@ -36,6 +45,7 @@ export default function(state = initialState, actions) {
 		case GET_MUSIC_FAIL:
 		case ADD_ARTIST_FAIL:
 		case ADD_MUSIC_FAIL:
+		case GET_ARTIS_FAIL:
 			return {
 				...state,
 				error: payload,

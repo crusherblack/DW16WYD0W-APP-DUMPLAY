@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import '../css/Movie.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPaperclip } from '@fortawesome/free-solid-svg-icons';
@@ -8,8 +8,14 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { useHistory } from 'react-router-dom';
 
-const AddMovie = ({ add_Music, film }) => {
+import { getArtistAll } from '../../redux/actions/music';
+
+const AddMovie = ({ getArtistAll, add_Music, music: { artisAll, loading } }) => {
 	const [ previewSrc, setPreviewSrc ] = useState(null);
+
+	useEffect(() => {
+		getArtistAll();
+	}, []);
 
 	let history = useHistory();
 
@@ -18,7 +24,7 @@ const AddMovie = ({ add_Music, film }) => {
 		year: '',
 		thumbnail: '',
 		singerId: '',
-		attache: null
+		attache: ''
 	});
 
 	const onChange = (event) => {
@@ -28,7 +34,7 @@ const AddMovie = ({ add_Music, film }) => {
 		setFormData(updateForm);
 	};
 
-	const { title, year } = formData;
+	const { title, year, attache } = formData;
 
 	const redirect = () => {
 		history.push(`/`);
@@ -136,21 +142,28 @@ const AddMovie = ({ add_Music, film }) => {
 							required
 						>
 							<option value="">Select Artist</option>
-							<option value="1">TV Series</option>
-							<option value="2">Movie</option>
+							{artisAll == null || loading ? (
+								'loading'
+							) : (
+								artisAll.map((artis) => (
+									<option value={artis.id} key={artis.id}>
+										{artis.name}
+									</option>
+								))
+							)}
 						</select>
 					</div>
 					<div className="form-group">
 						<input
-							type="file"
-							className="custom-select"
-							onChange={(e) => {
-								onChange(e);
-							}}
+							type="number"
+							className="custom-input"
+							placeholder="Link Music"
+							onChange={(e) => onChange(e)}
+							value={attache}
 							name="attache"
+							required
 						/>
 					</div>
-
 					<div className="form-group">
 						<button
 							type="submit"
@@ -175,11 +188,13 @@ const AddMovie = ({ add_Music, film }) => {
 };
 
 AddMovie.propTypes = {
-	add_Music: PropTypes.func.isRequired
+	add_Music: PropTypes.func.isRequired,
+	getArtistAll: PropTypes.func.isRequired
 };
 
 const mapStateToProps = (state) => ({
-	film: state.film
+	film: state.film,
+	music: state.music
 });
 
-export default connect(mapStateToProps, { add_Music })(AddMovie);
+export default connect(mapStateToProps, { add_Music, getArtistAll })(AddMovie);

@@ -6,7 +6,9 @@ import {
 	ADD_ARTIST_SUCCESS,
 	ADD_ARTIST_FAIL,
 	ADD_MUSIC_SUCCESS,
-	ADD_MUSIC_FAIL
+	ADD_MUSIC_FAIL,
+	GET_ARTIS_ALL,
+	GET_ARTIS_FAIL
 } from './types';
 
 //Get All Films
@@ -89,6 +91,22 @@ export const add_Artist = (formData, cleanForm) => async (dispatch) => {
 		dispatch({
 			type: ADD_ARTIST_FAIL,
 			payload: err.res.data.error.message
+		});
+	}
+};
+
+//Get All Artist
+export const getArtistAll = (limit) => async (dispatch) => {
+	try {
+		let res = await API.get(`/artist`);
+		dispatch({
+			type: GET_ARTIS_ALL,
+			payload: res.data.data
+		});
+	} catch (err) {
+		dispatch({
+			type: GET_ARTIS_FAIL,
+			payload: err.response.data.error.message
 		});
 	}
 };

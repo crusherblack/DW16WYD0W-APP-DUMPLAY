@@ -8,6 +8,9 @@ export const ADD_ARTIST_FAIL = 'ADD_ARTIST_FAIL';
 export const ADD_MUSIC_SUCCESS = 'ADD_MUSIC_SUCCESS';
 export const ADD_MUSIC_FAIL = 'ADD_MUSIC_FAIL';
 
+export const GET_ARTIS_ALL = 'GET_ARTIS_ALL';
+export const GET_ARTIS_FAIL = 'GET_ARTIS_FAIL';
+
 export const ERROR = 'ERROR';
 
 //Login & Auth types

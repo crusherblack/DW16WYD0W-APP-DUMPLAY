@@ -8,7 +8,6 @@ import { connect } from 'react-redux';
 import { getMusicAll } from '../redux/actions/music';
 import PropTypes from 'prop-types';
 
-import HomeSkeleton from '../components/Skeleton/HomeSkeleton';
 import Loader from '../components/Loader/Loader';
 
 const Home = ({
