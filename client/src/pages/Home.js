@@ -13,8 +13,8 @@ import Loader from '../components/Loader/Loader';
 
 const Home = ({
 	getMusicAll,
-	music: { musicAll, loading },
-	auth: { isAuthenticated }
+	music: { musicAll },
+	auth: { isAuthenticated, user, loading }
 }) => {
 	const [ playIndex, setPlayIndex ] = useState(0);
 	const [ loadingSkeleton, setLoadingSkeleton ] = useState(true);
@@ -29,7 +29,7 @@ const Home = ({
 
 	useEffect(
 		() => {
-			getMusicAll(12);
+			getMusicAll(24);
 		},
 		[ getMusicAll ]
 	);
@@ -47,13 +47,15 @@ const Home = ({
 				setPlayIndex={setPlayIndex}
 				playIndex={playIndex}
 			/>
-			{isAuthenticated && (
+
+			{user === null ? null : (isAuthenticated && user.subscribe) ||
+			(isAuthenticated && user.role === 1) ? (
 				<MusicPlayer
 					musicAll={musicAll}
 					playIndex={playIndex}
 					setPlayIndex={setPlayIndex}
 				/>
-			)}
+			) : null}
 		</div>
 	);
 };

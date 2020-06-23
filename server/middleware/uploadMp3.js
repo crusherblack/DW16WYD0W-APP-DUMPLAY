@@ -13,9 +13,9 @@ exports.upload = (fileName) => {
 	const filter = function(req, file, cb) {
 		if (!file.originalname.match(/\.(mp3|MP3)$/)) {
 			req.fileValidationError = {
-				message: 'Only image files are allowed!'
+				message: 'Only MP3 files are allowed!'
 			};
-			return cb(new Error('Only image files are allowed!'), false);
+			return cb(new Error('Only MP3 files are allowed!'), false);
 		}
 		cb(null, true);
 	};

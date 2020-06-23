@@ -26,24 +26,28 @@ export const getMusicAll = (limit) => async (dispatch) => {
 };
 
 //Add Music
-export const add_Music = (formData, redirect) => async (dispatch) => {
+export const add_Music = (payload, redirect) => async (dispatch) => {
 	try {
-		const { name, old, type, startCareer } = formData;
+		const { title, year, thumbnail, singerId, attache } = payload;
+
+		const formData = new FormData();
+
+		formData.append('title', title);
+		formData.append(
+			'attache',
+			'https://res.cloudinary.com/ehsanahmadi/video/upload/v1573550770/Sirvan-Khosravi-Dorost-Nemisham-128_kb8urq.mp3'
+		);
+		formData.append('thumbnail', thumbnail);
+		formData.append('year', year);
+		formData.append('singerId', singerId);
 
 		const config = {
 			headers: {
-				'Content-Type': 'application/json'
+				'content-type': 'multipart/form-data'
 			}
 		};
 
-		const body = JSON.stringify({
-			name,
-			old,
-			type,
-			startCareer
-		});
-
-		let res = await API.post(`/music`, body, config);
+		let res = await API.post(`/music`, formData, config);
 		dispatch({
 			type: ADD_MUSIC_SUCCESS,
 			payload: res.data.data

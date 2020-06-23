@@ -2,6 +2,7 @@
   from {
     opacity: 0;
   }
+
   to {
     opacity: 1;
   }
@@ -11,6 +12,7 @@
   from {
     opacity: 0;
   }
+
   to {
     opacity: 1;
   }
@@ -20,6 +22,7 @@
   from {
     opacity: 0;
   }
+
   to {
     opacity: 1;
   }
@@ -43,9 +46,10 @@
 
 .card-backround .playIcon {
   position: absolute;
-  top: 35%;
-  left: 35%;
+  top: 50%;
+  left: 50%;
   opacity: 0;
+  transform: translate(-50%, -50%);
 }
 
 .playIcon:hover {

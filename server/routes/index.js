@@ -37,18 +37,11 @@ router.post('/artist', auth, authAdmin, addArtist);
 // Music Routes
 router.get('/music', getMusic);
 router.get('/music/:id', auth, getDetailMusic);
-router.post(
-	'/music',
-	auth,
-	authAdmin,
-	upload('attache'),
-	uploadImage('thumbnail'),
-	addMusic
-);
+router.post('/music', auth, authAdmin, uploadImage('thumbnail'), addMusic);
 
 // Transcation Routes
 router.get('/transaction', getTransaction);
-router.post('/transaction', auth, upload('attache'), addTransaction);
+router.post('/transaction', auth, uploadImage('attache'), addTransaction);
 router.patch('/transaction/:id', auth, authAdmin, editTransaction);
 router.delete('/transaction/:id', auth, authAdmin, deleteTransaction);
 

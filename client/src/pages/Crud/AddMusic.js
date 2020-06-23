@@ -38,7 +38,7 @@ const AddMovie = ({ add_Music, film }) => {
 		e.preventDefault();
 		console.log(formData);
 
-		//add_Music(formData, redirect);
+		add_Music(formData, redirect);
 	};
 
 	const onChangeFiles = (e) => {
