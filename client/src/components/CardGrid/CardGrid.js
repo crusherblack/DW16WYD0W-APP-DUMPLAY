@@ -2,8 +2,16 @@ import React from "react";
 import MovieCard from "../MusicCard/MusicCard";
 import "./CardGrid.css";
 
-const CardGrid = ({ films, title }) => {
-  const list = films.map((movie) => <MovieCard movie={movie} key={movie.id} />);
+const CardGrid = ({ films, title, setPlayIndex }) => {
+  const list = films.map((movie, index) => (
+    <MovieCard
+      movie={movie}
+      key={movie.id}
+      setPlayIndex={setPlayIndex}
+      index={index}
+      key={index}
+    />
+  ));
 
   return (
     <div className="movie-grid">

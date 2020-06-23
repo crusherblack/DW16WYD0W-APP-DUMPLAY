@@ -11,6 +11,7 @@ import PropTypes from "prop-types";
 import HomeSkeleton from "../components/Skeleton/HomeSkeleton";
 
 const Home = ({ getMusicAll, music: { musicAll, loading } }) => {
+  const [playIndex, setPlayIndex] = useState(0);
   const [loadingSkeleton, setLoadingSkeleton] = useState(false);
 
   useEffect(() => {
@@ -32,8 +33,12 @@ const Home = ({ getMusicAll, music: { musicAll, loading } }) => {
   ) : (
     <div>
       <HeroImage />
-      <CardGrid title="Dengarkan dan Rasakan" films={musicAll} />
-      <MusicPlayer />
+      <CardGrid
+        title="Dengarkan dan Rasakan"
+        films={musicAll}
+        setPlayIndex={setPlayIndex}
+      />
+      <MusicPlayer musicAll={musicAll} playIndex={playIndex} />
     </div>
   );
 };

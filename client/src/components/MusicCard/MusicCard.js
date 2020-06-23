@@ -1,7 +1,7 @@
 import React from "react";
 import { useHistory } from "react-router-dom";
 import "./MusicCard.css";
-import sampleImg from "../../img/musicimg/music1.png";
+import playIcon from "../../img/iconplay.png";
 
 const MusicCard = ({
   movie: {
@@ -9,21 +9,42 @@ const MusicCard = ({
     title,
     year,
     artis: { name },
-    category,
+    thumbnail,
   },
+  setPlayIndex,
+  index,
 }) => {
-  let history = useHistory();
+  const text_truncate = (str, length, ending) => {
+    if (length == null) {
+      length = 100;
+    }
+    if (ending == null) {
+      ending = "...";
+    }
+    if (str.length > length) {
+      return str.substring(0, length - ending.length) + ending;
+    } else {
+      return str;
+    }
+  };
 
   return (
     <div className="card-backround">
+      <div className="playIcon">
+        <img
+          src={playIcon}
+          alt="playIcon"
+          onClick={() => setPlayIndex(index)}
+        />
+      </div>
       <div>
         <img
           className="card"
-          src={sampleImg}
-          onClick={() => history.push(`/detail/${id}`)}
+          src={`http://localhost:5000/uploads/${thumbnail}`}
           style={{ height: "auto" }}
+          onClick={() => setPlayIndex(index)}
         />
-        <span className="movie-title">{title}</span>
+        <span className="movie-title">{text_truncate(title, 15)}</span>
         <span className="movie-kanan">{year}</span>
         <span className="movie-artis">{name}</span>
       </div>
