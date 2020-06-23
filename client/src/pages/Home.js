@@ -9,10 +9,11 @@ import { getMusicAll } from '../redux/actions/music';
 import PropTypes from 'prop-types';
 
 import HomeSkeleton from '../components/Skeleton/HomeSkeleton';
+import Loader from '../components/Loader/Loader';
 
 const Home = ({ getMusicAll, music: { musicAll, loading } }) => {
 	const [ playIndex, setPlayIndex ] = useState(0);
-	const [ loadingSkeleton, setLoadingSkeleton ] = useState(false);
+	const [ loadingSkeleton, setLoadingSkeleton ] = useState(true);
 
 	useEffect(() => {
 		const timer = setTimeout(() => {
@@ -31,7 +32,7 @@ const Home = ({ getMusicAll, music: { musicAll, loading } }) => {
 
 	return loadingSkeleton || loading ? (
 		<div>
-			<HomeSkeleton />
+			<Loader />
 		</div>
 	) : (
 		<div>
