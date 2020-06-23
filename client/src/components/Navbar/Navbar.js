@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "./Navbar.css";
 import { Link } from "react-router-dom";
 
-import logo from "../../img/logo.png";
+import logo from "../../img/logoplay.png";
 import person from "../../img/person.jpg";
 import ProfileDropdown from "../Profile/ProfileDropdown";
 import { connect } from "react-redux";
@@ -29,9 +29,6 @@ const Navbar = ({
 
   return (
     <div className="navbar">
-      <Link to="/">Home</Link>
-      <Link to="/tv-series">TV Shows</Link>
-      <Link to="/movies">Movies</Link>
       <div className="logo">
         <img
           src={logo}

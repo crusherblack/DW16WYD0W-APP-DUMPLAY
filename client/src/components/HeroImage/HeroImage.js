@@ -1,28 +1,29 @@
-import React from 'react';
-import './HeroImage.css';
+import React from "react";
+import "./HeroImage.css";
+import img from "../../img/videothumbnail/music.png";
 
-const HeroImage = ({ heroImage: { img, logo, desc, year, type } }) => {
-	return (
-		<div
-			className="hero"
-			style={{
-				background: `linear-gradient(to bottom, rgba(0,0, 0, 0), black), url('${img}'), #1c1c1c`
-			}}
-		>
-			<div className="hero-content">
-				<div className="hero-text">
-					<img src={logo} alt="logohero" className="logohero" />
-					<p>{desc}</p>
-					<p>
-						<span className="year">{year}</span>
-						<span className="tipe">{type}</span>
-					</p>
-
-					<button className="hero-button">WATCH NOW !</button>
-				</div>
-			</div>
-		</div>
-	);
+const HeroImage = () => {
+  return (
+    <div>
+      <div
+        className="hero"
+        style={{
+          height: "70vh",
+          background: `url('${img}'), #1c1c1c`,
+        }}
+      ></div>
+      <div className="hero-content">
+        <div className="hero-text">
+          <h1>Connect on DumbSound</h1>
+          <p>
+            Discovery, Stream, and share a constantly expanding mix of music{" "}
+            <br />
+            from emerging and major artists around the world
+          </p>
+        </div>
+      </div>
+    </div>
+  );
 };
 
 export default HeroImage;

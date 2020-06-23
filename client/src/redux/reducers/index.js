@@ -1,7 +1,7 @@
 import { combineReducers } from "redux"; //Root Reducers
 
-import film from "./film";
+import music from "./music";
 import auth from "./auth";
 import payment from "./payment";
 
-export default combineReducers({ film, auth, payment });
+export default combineReducers({ music, auth, payment });
