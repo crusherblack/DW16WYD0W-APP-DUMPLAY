@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 
 import HeroImage from "../components/HeroImage/HeroImage";
 import CardGrid from "../components/CardGrid/CardGrid";
+import MusicPlayer from "../components/MusicPlayer/MusicPlayer";
 
 import { connect } from "react-redux";
 import { getMusicAll } from "../redux/actions/music";
@@ -31,8 +32,8 @@ const Home = ({ getMusicAll, music: { musicAll, loading } }) => {
   ) : (
     <div>
       <HeroImage />
-
       <CardGrid title="Dengarkan dan Rasakan" films={musicAll} />
+      <MusicPlayer />
     </div>
   );
 };
