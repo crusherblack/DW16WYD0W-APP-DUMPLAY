@@ -11,14 +11,11 @@ module.exports = {
 			title: {
 				type: Sequelize.STRING
 			},
-			thumbnailMusic: {
+			thumbnail: {
 				type: Sequelize.STRING
 			},
 			year: {
 				type: Sequelize.STRING
-			},
-			singerId: {
-				type: Sequelize.INTEGER
 			},
 			singerId: {
 				allowNull: false,
@@ -30,7 +27,7 @@ module.exports = {
 				onUpdate: 'CASCADE',
 				onDelete: 'CASCADE'
 			},
-			linkMusic: {
+			attache: {
 				type: Sequelize.STRING
 			},
 			createdAt: {

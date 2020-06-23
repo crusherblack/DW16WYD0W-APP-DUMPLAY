@@ -4,7 +4,7 @@ const { response } = require('express');
 
 exports.getMusic = async (req, res) => {
 	try {
-		const { page: pageQuery, limit: limitQuery, categoryId } = req.query;
+		const { page: pageQuery, limit: limitQuery } = req.query;
 
 		const page = pageQuery ? parseInt(pageQuery) - 1 : 0;
 		const pageSize = limitQuery ? parseInt(limitQuery) : 10;
@@ -19,21 +19,27 @@ exports.getMusic = async (req, res) => {
 			};
 		};
 
-		let filter = {};
-		if (categoryId) {
-			filter.categoryId = categoryId;
+		const cekArtist = await Artist.findOne({
+			where: {
+				id: req.body.singerId
+			}
+		});
+
+		if (!cekArtist) {
+			return res.status(400).send({
+				error: {
+					message: 'Artist Not Found'
+				}
+			});
 		}
 
-		const film = await Film.findAll(
+		const music = await Music.findAll(
 			Object.assign(
-				{
-					where: filter
-				},
 				{
 					include: [
 						{
-							model: Category,
-							as: 'category',
+							model: Artist,
+							as: 'artist',
 							attributes: {
 								exclude: [ 'createdAt', 'updatedAt' ]
 							}
@@ -51,21 +57,20 @@ exports.getMusic = async (req, res) => {
 			)
 		);
 
-		if (film) {
-			return res.send({
-				data: film,
-				paginationInfo: {
-					currentPage: page + 1,
-					limit: limitQuery
-				}
-			});
-		} else {
+		if (!music) {
 			return res.status(400).send({
 				error: {
-					message: 'Films Not Found'
+					message: 'Failed To Created Music'
 				}
 			});
 		}
+		return res.status(200).send({
+			data: music,
+			paginationInfo: {
+				currentPage: page + 1,
+				limit: limitQuery
+			}
+		});
 	} catch (error) {
 		console.log(error);
 		return res.status(500).send({
@@ -79,41 +84,33 @@ exports.getMusic = async (req, res) => {
 exports.getDetailMusic = async (req, res) => {
 	try {
 		const { id } = req.params;
-		const film = await Film.findOne({
+		const music = await Music.findOne({
 			where: {
 				id
 			},
 			include: [
 				{
-					model: Episode,
-					as: 'episodes',
-					attributes: {
-						exclude: [ 'createdAt', 'updatedAt', 'filmId', 'FilmId' ]
-					}
-				},
-				{
-					model: Category,
-					as: 'category',
+					model: Artist,
+					as: 'artist',
 					attributes: {
 						exclude: [ 'createdAt', 'updatedAt' ]
 					}
 				}
 			],
-			order: [ [ { model: Episode, as: 'episodes' }, 'title', 'ASC' ] ],
 			attributes: {
-				exclude: [ 'createdAt', 'updatedAt', 'categoryId' ]
+				exclude: [ 'createdAt', 'updatedAt', 'singerId' ]
 			}
 		});
 
-		if (film) {
-			return res.send({
-				data: film
-			});
-		} else {
+		if (!music) {
 			return res.status(400).send({
 				message: 'Films Not Found'
 			});
 		}
+
+		return res.status(200).send({
+			data: music
+		});
 	} catch (error) {
 		console.log(error);
 		return res.status(500).send({
@@ -124,13 +121,12 @@ exports.getDetailMusic = async (req, res) => {
 	}
 };
 
-exports.addFilm = async (req, res) => {
+exports.addMusic = async (req, res) => {
 	try {
 		const schema = Joi.object({
 			title: Joi.string().min(3).required(),
 			year: Joi.string().required(),
-			categoryId: Joi.required(),
-			description: Joi.string().required()
+			singerId: Joi.required()
 		});
 		const { error } = schema.validate(req.body);
 
@@ -141,50 +137,48 @@ exports.addFilm = async (req, res) => {
 				}
 			});
 
-		const { categoryId } = req.body;
-
-		const cekCategory = await Category.findOne({
+		const cekArtist = await Artist.findOne({
 			where: {
-				id: categoryId
+				id: req.body.singerId
 			}
 		});
 
-		if (!cekCategory)
+		if (!cekArtist)
 			return res.status(400).send({
-				message: 'Category Not Found'
+				message: 'Artist Not Found'
 			});
 
-		const film = await Film.create({
+		const music = await Music.create({
 			...req.body,
-			categoryId,
-			thumbnailFilm: req.file.filename
+			thumbnail: req.file.filename
 		});
 
-		if (film) {
-			const filmResult = await Film.findOne({
-				where: {
-					id: film.id
-				},
-				include: {
-					model: Category,
-					as: 'category',
+		if (!music)
+			return res.status(400).send({
+				message: 'Music Not Success Created / Try Again '
+			});
+
+		const musicResult = await Music.findOne({
+			where: {
+				id: music.id
+			},
+			include: [
+				{
+					model: Artist,
+					as: 'artist',
 					attributes: {
 						exclude: [ 'createdAt', 'updatedAt' ]
 					}
-				},
-				attributes: {
-					exclude: [ 'createdAt', 'updatedAt' ]
 				}
-			});
+			],
+			attributes: {
+				exclude: [ 'createdAt', 'updatedAt', 'singerId' ]
+			}
+		});
 
-			return res.send({
-				data: filmResult
-			});
-		} else {
-			return res.status(400).send({
-				message: 'Please Try Again'
-			});
-		}
+		return res.status(200).send({
+			data: musicResult
+		});
 	} catch (error) {
 		console.log(error);
 		return res.status(500).send({

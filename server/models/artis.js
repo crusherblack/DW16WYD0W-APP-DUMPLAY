@@ -6,7 +6,7 @@ module.exports = (sequelize, DataTypes) => {
 			name: DataTypes.STRING,
 			old: DataTypes.STRING,
 			type: DataTypes.STRING,
-			startCareer: DataTypes.DATE
+			startCareer: DataTypes.INTEGER
 		},
 		{}
 	);

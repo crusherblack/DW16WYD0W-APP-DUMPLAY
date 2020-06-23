@@ -19,7 +19,7 @@ exports.getTransaction = async (req, res) => {
 		});
 
 		if (transaction) {
-			return res.send({
+			return res.status(200).send({
 				data: transaction
 			});
 		} else {
@@ -74,7 +74,7 @@ exports.addTransaction = async (req, res) => {
 				}
 			});
 
-			return res.send({
+			return res.status(200).send({
 				data: transactionResult
 			});
 		} else {
@@ -161,7 +161,7 @@ exports.editTransaction = async (req, res) => {
 				}
 			});
 
-			return res.send({
+			return res.status(200).send({
 				data: {
 					resultTransaction
 				}
@@ -199,7 +199,7 @@ exports.deleteTransaction = async (req, res) => {
 				}
 			});
 
-			return res.send({
+			return res.status(200).send({
 				data: {
 					id
 				}
