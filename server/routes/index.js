@@ -9,6 +9,10 @@ const { login, register, cekAuth } = require('../controllers/auth');
 
 const { getUser, deleteUser } = require('../controllers/user');
 
+const { getArtist, addArtist } = require('../controllers/artist');
+
+const { getMusic, getDetailMusic, addMusic } = require('../controllers/music');
+
 const {
 	addTransaction,
 	getTransaction,
@@ -24,6 +28,15 @@ router.get('/auth', auth, cekAuth);
 // User Routes
 router.get('/user', auth, authAdmin, getUser);
 router.delete('/user/:id', auth, authAdmin, deleteUser);
+
+// Artist Routes
+router.get('/artist', getArtist);
+router.post('/artist', auth, authAdmin, addArtist);
+
+// Music Routes
+router.get('/music', getMusic);
+router.get('/music/:id', auth, getDetailMusic);
+router.post('/music', auth, authAdmin, addMusic);
 
 // Transcation Routes
 router.get('/transaction', getTransaction);

@@ -7,7 +7,7 @@ module.exports = (sequelize, DataTypes) => {
 			thumbnail: DataTypes.STRING,
 			year: DataTypes.STRING,
 			singerId: DataTypes.INTEGER,
-			linkMusic: DataTypes.STRING
+			attache: DataTypes.STRING
 		},
 		{}
 	);

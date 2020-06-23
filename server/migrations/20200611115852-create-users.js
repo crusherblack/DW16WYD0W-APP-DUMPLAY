@@ -29,7 +29,7 @@ module.exports = {
 			address: {
 				type: Sequelize.STRING
 			},
-			subscribe: {
+			listAs: {
 				type: Sequelize.BOOLEAN
 			},
 			dueDate: {

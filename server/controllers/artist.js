@@ -33,7 +33,7 @@ exports.getArtist = async (req, res) => {
 	}
 };
 
-exports.addMusic = async (req, res) => {
+exports.addArtist = async (req, res) => {
 	try {
 		const schema = Joi.object({
 			name: Joi.string().min(3).required(),
