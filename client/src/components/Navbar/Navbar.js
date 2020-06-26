@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import "./Navbar.css";
-import { Link } from "react-router-dom";
 
 import logo from "../../img/logoplay.png";
 import person from "../../img/person.jpg";
 import ProfileDropdown from "../Profile/ProfileDropdown";
+
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 
@@ -50,7 +50,11 @@ const Navbar = ({
       )}
       {isAuthenticated && (
         <div className="profile">
-          <img src={person} alt="" onClick={() => showProfileDropdown()} />
+          <img
+            src={person}
+            alt="person"
+            onClick={() => showProfileDropdown()}
+          />
         </div>
       )}
       {isProfileDropdown && (
