@@ -12,9 +12,7 @@ exports.cekSub = async (req, res, next) => {
     let date = dayjs();
     let now = date.format("YYYY-MM-DD");
 
-    console.log({ dueDate: user.dueDate, now });
-
-    if (user.dueDate > now) {
+    if (user.dueDate < now) {
       await User.update(
         {
           subscribe: false,
@@ -25,9 +23,6 @@ exports.cekSub = async (req, res, next) => {
           },
         }
       );
-      console.log("dueDate lebih dari tanggal sekarang");
-    } else {
-      console.log("dueDate kurang dari tanggal sekarang");
     }
 
     next();
