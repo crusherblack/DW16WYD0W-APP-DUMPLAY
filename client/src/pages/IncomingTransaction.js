@@ -35,7 +35,7 @@ const IncomingTransaction = ({
 				<td>{data.userInfo.fullName}</td>
 				<td>
 					<img
-						style={{ width: '200px' }}
+						style={{ width: '50px', height: '50px', cursor: 'pointer' }}
 						src={`http://localhost:5000/uploads/${data.attache}`}
 						alt="data"
 					/>
