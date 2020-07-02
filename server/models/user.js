@@ -11,7 +11,8 @@ module.exports = (sequelize, DataTypes) => {
 			phone: DataTypes.STRING,
 			address: DataTypes.STRING,
 			subscribe: DataTypes.BOOLEAN,
-			dueDate: DataTypes.DATEONLY
+			dueDate: DataTypes.DATEONLY,
+			profile: DataTypes.STRING
 		},
 		{}
 	);

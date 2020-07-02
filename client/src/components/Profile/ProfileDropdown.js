@@ -38,11 +38,6 @@ const ProfileDropdown = ({
 		showProfileDropdown();
 	};
 
-	const openListMovie = () => {
-		history.push(`/movie-list`);
-		showProfileDropdown();
-	};
-
 	const setLogout = () => {
 		handleLogout();
 		showProfileDropdown();

@@ -16,6 +16,7 @@ exports.cekAuth = async (req, res) => {
 			}
 		});
 		res.status(200).send({
+			status: 'success',
 			data: user
 		});
 	} catch (err) {
