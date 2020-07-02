@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import './css/Profile.css';
-import avatar from '../img/profile/djavatar.png';
+import avatar from '../img/person.jpg';
 import { changeProfile } from '../redux/actions/auth';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';

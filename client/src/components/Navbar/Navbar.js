@@ -13,7 +13,7 @@ import { useHistory } from 'react-router-dom';
 const Navbar = ({
 	showModalLogin,
 	showModalRegister,
-	auth: { isAuthenticated, user }
+	auth: { isAuthenticated, loading, user }
 }) => {
 	let history = useHistory();
 
@@ -48,20 +48,25 @@ const Navbar = ({
 					</button>
 				</div>
 			)}
-			{isAuthenticated && (
-				<div className="profile">
-					<img
-						src={
-							user.profile === '' ? (
-								person
-							) : (
-								`http://localhost:5000/uploads/${user.profile}`
-							)
-						}
-						alt="person"
-						onClick={() => showProfileDropdown()}
-					/>
-				</div>
+
+			{user === null || loading ? (
+				<div>Loading...</div>
+			) : (
+				isAuthenticated && (
+					<div className="profile">
+						<img
+							src={
+								user.profile === '' ? (
+									person
+								) : (
+									`http://localhost:5000/uploads/${user.profile}`
+								)
+							}
+							alt="person"
+							onClick={() => showProfileDropdown()}
+						/>
+					</div>
+				)
 			)}
 			{isProfileDropdown && (
 				<ProfileDropdown showProfileDropdown={showProfileDropdown} />
