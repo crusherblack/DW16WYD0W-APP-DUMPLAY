@@ -21,7 +21,7 @@ const Navbar = ({
 		document.addEventListener('scroll', () => {
 			const backgroundcolor = window.scrollY < 70 ? 'transparent' : 'black';
 
-			setBackround(backgroundcolor);
+			setBackround(backgroundcolor); //auto navbar color
 		});
 	}, []);
 
