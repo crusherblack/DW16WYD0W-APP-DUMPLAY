@@ -117,3 +117,24 @@ export const clearError = () => (dispatch) => {
 		type: CLEAR_AUTH_ERROR
 	});
 };
+
+//Change Profile Pict
+export const changeProfile = (image) => async (dispatch) => {
+	try {
+		const formData = new FormData();
+
+		formData.append('image', image);
+
+		const config = {
+			headers: {
+				'content-type': 'multipart/form-data'
+			}
+		};
+
+		const res = await API.post('/profile', formData, config);
+		console.log(res);
+		dispatch(loadUser());
+	} catch (err) {
+		console.log(err);
+	}
+};

@@ -11,7 +11,7 @@ import {
 	GET_ARTIS_FAIL
 } from './types';
 
-//Get All Films
+//Get All Music
 export const getMusicAll = (limit) => async (dispatch) => {
 	try {
 		let res = await API.get(`music?page=1&limit=${limit}`);

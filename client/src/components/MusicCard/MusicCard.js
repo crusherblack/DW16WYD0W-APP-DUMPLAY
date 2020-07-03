@@ -32,7 +32,6 @@ const MusicCard = ({
 				<img
 					className="card"
 					src={`http://localhost:5000/uploads/${thumbnail}`}
-					style={{ height: 'auto' }}
 					onClick={() => setPlayIndex(index)}
 				/>
 				<span className="movie-title">{text_truncate(title, 15)}</span>
