@@ -2,7 +2,7 @@ import React from "react";
 import MovieCard from "../MusicCard/MusicCard";
 import "./CardGrid.css";
 
-const CardGrid = ({ films, title, setPlayIndex, playIndex }) => {
+const CardGrid = ({ films, title, setPlayIndex, playIndex, auth }) => {
   const list = films.map((movie, index) => (
     <MovieCard
       movie={movie}
@@ -11,6 +11,7 @@ const CardGrid = ({ films, title, setPlayIndex, playIndex }) => {
       index={index}
       key={index}
       playIndex={playIndex}
+      auth={auth}
     />
   ));
 
