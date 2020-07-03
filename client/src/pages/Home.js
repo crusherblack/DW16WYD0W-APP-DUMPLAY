@@ -22,15 +22,19 @@ const Home = ({
 
   useEffect(() => {
     const timer = setTimeout(() => {
+      getMusicAll(1, queryTitle);
+    }, 300);
+
+    return () => clearTimeout(timer);
+  }, [queryTitle]);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
       setLoadingSkeleton(false);
     }, 1000);
 
     return () => clearTimeout(timer);
   }, []);
-
-  useEffect(() => {
-    getMusicAll(1, queryTitle);
-  }, [queryTitle]);
 
   const newAuth = { isAuthenticated, loading };
 
