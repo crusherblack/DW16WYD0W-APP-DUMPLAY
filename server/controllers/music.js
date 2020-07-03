@@ -57,6 +57,7 @@ exports.getMusic = async (req, res) => {
       paginationInfo: {
         currentPage: page + 1,
         limit: limitQuery,
+        totalData: await Music.count(),
       },
     });
   } catch (error) {

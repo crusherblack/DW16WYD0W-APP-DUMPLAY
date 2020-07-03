@@ -12,9 +12,10 @@ import Loader from "../components/Loader/Loader";
 
 const Home = ({
   getMusicAll,
-  music: { musicAll },
+  music: { musicAll, paginationInfo },
   auth: { isAuthenticated, user, loading },
 }) => {
+  const [pageNow, setPageNow] = useState(1);
   const [playIndex, setPlayIndex] = useState(0);
   const [loadingSkeleton, setLoadingSkeleton] = useState(true);
 
@@ -27,8 +28,8 @@ const Home = ({
   }, []);
 
   useEffect(() => {
-    getMusicAll(24);
-  }, [getMusicAll]);
+    getMusicAll(pageNow);
+  }, [getMusicAll, pageNow]);
 
   const newAuth = { isAuthenticated, loading };
 
@@ -41,10 +42,13 @@ const Home = ({
       <HeroImage />
       <CardGrid
         title="Dengarkan dan Rasakan"
-        films={musicAll}
+        musics={musicAll}
         setPlayIndex={setPlayIndex}
         playIndex={playIndex}
         auth={newAuth}
+        setPageNow={setPageNow}
+        pageNow={pageNow}
+        paginationInfo={paginationInfo}
       />
 
       {user === null ? null : (isAuthenticated && user.subscribe) ||

@@ -44,3 +44,20 @@
   text-align: center;
   margin-bottom: 50px;
 }
+
+.btn-loadmore {
+  margin-top: 2rem;
+  border: 1px solid #d63815;
+  background-color: #d63815;
+  border-radius: 5px;
+  color: #fff;
+  cursor: pointer;
+  padding: 1rem;
+  width: 100%;
+  font-size: 18px;
+}
+
+.btn-loadmore:hover {
+  border: 1px solid #b82a0b;
+  background-color: #b82a0b;
+}

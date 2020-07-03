@@ -7,6 +7,7 @@ import {
   ADD_MUSIC_FAIL,
   GET_ARTIS_ALL,
   GET_ARTIS_FAIL,
+  PAGINATION_INFO,
 } from "../actions/types";
 
 const initialState = {
@@ -15,6 +16,7 @@ const initialState = {
   artisAll: [],
   error: "",
   alert: "",
+  paginationInfo: null,
 };
 
 export default function (state = initialState, actions) {
@@ -24,7 +26,13 @@ export default function (state = initialState, actions) {
     case GET_MUSIC_ALL:
       return {
         ...state,
-        musicAll: payload,
+        musicAll: [...state.musicAll, ...payload],
+        loading: false,
+      };
+    case PAGINATION_INFO:
+      return {
+        ...state,
+        paginationInfo: payload,
         loading: false,
       };
     case GET_ARTIS_ALL:
