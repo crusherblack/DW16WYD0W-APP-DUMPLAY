@@ -13,9 +13,10 @@ import Loader from "../components/Loader/Loader";
 const Home = ({
   getMusicAll,
   loadMore,
-  music: { musicAll, paginationInfo, loading: musicLoading },
+  music: { musicAll, paginationInfo },
   auth: { isAuthenticated, user, loading },
 }) => {
+  const [queryTitle, setQueryTitle] = useState("");
   const [playIndex, setPlayIndex] = useState(0);
   const [loadingSkeleton, setLoadingSkeleton] = useState(true);
 
@@ -28,8 +29,8 @@ const Home = ({
   }, []);
 
   useEffect(() => {
-    getMusicAll(1);
-  }, []);
+    getMusicAll(1, queryTitle);
+  }, [queryTitle]);
 
   const newAuth = { isAuthenticated, loading };
 
@@ -48,6 +49,8 @@ const Home = ({
         auth={newAuth}
         paginationInfo={paginationInfo}
         loadMore={loadMore}
+        setQueryTitle={setQueryTitle}
+        queryTitle={queryTitle}
       />
 
       {user === null ? null : (isAuthenticated && user.subscribe) ||

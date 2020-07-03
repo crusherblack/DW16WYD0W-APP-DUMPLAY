@@ -13,13 +13,14 @@ import {
   LOAD_MORE_MUSIC,
 } from "./types";
 
+const limit = 18;
 //Get All Music
-export const getMusicAll = (page) => async (dispatch) => {
+export const getMusicAll = (page, title) => async (dispatch) => {
   try {
-    let res = await API.get(`music?page=${page}&limit=18`);
+    let res = await API.get(`music?page=${page}&limit=${limit}&title=${title}`);
     dispatch({
       type: GET_MUSIC_ALL,
-      payload: res.data.data,
+      payload: res.data.data.rows,
     });
     dispatch({
       type: PAGINATION_INFO,
@@ -35,10 +36,10 @@ export const getMusicAll = (page) => async (dispatch) => {
 
 export const loadMore = (page) => async (dispatch) => {
   try {
-    let res = await API.get(`music?page=${page}&limit=18`);
+    let res = await API.get(`music?page=${page}&limit=${limit}`);
     dispatch({
       type: LOAD_MORE_MUSIC,
-      payload: res.data.data,
+      payload: res.data.data.rows,
     });
     dispatch({
       type: PAGINATION_INFO,

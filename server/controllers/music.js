@@ -2,9 +2,11 @@ const { Music, Artis } = require("../models");
 const Joi = require("@hapi/joi");
 const { response } = require("express");
 
+const { Op } = require("sequelize");
+
 exports.getMusic = async (req, res) => {
   try {
-    const { page: pageQuery, limit: limitQuery } = req.query;
+    const { page: pageQuery, limit: limitQuery, title } = req.query;
 
     const page = pageQuery ? parseInt(pageQuery) - 1 : 0;
     const pageSize = limitQuery ? parseInt(limitQuery) : 10;
@@ -19,8 +21,16 @@ exports.getMusic = async (req, res) => {
       };
     };
 
-    const music = await Music.findAll(
+    let filter = {};
+    if (title) {
+      filter.title = { [Op.like]: "%" + title + "%" };
+    }
+
+    const music = await Music.findAndCountAll(
       Object.assign(
+        {
+          where: filter,
+        },
         {
           include: [
             {
@@ -57,7 +67,7 @@ exports.getMusic = async (req, res) => {
       paginationInfo: {
         currentPage: page + 1,
         limit: limitQuery,
-        totalData: await Music.count(),
+        totalData: music.count,
       },
     });
   } catch (error) {

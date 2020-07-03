@@ -1,19 +1,18 @@
 import React from "react";
-import InfiniteScroll from "react-infinite-scroll-component";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faSearch } from "@fortawesome/free-solid-svg-icons";
 
 import MovieCard from "../MusicCard/MusicCard";
 import "./CardGrid.css";
 
 const CardGrid = ({
   musics,
-  title,
   setPlayIndex,
   playIndex,
   auth,
-  setPageNow,
-  pageNow,
   paginationInfo,
-  musicLoading,
+  queryTitle,
+  setQueryTitle,
   loadMore,
 }) => {
   const list = musics.map((movie, index) => (
@@ -30,9 +29,19 @@ const CardGrid = ({
 
   return (
     <div className="movie-grid">
-      <div className="movie-type">
-        <p> {title} </p>
+      <div className="search">
+        <input
+          type="text"
+          className="searchTerm"
+          placeholder="Cari lagu favorite anda disini..."
+          value={queryTitle}
+          onChange={(e) => setQueryTitle(e.target.value)}
+        />
+        <button type="submit" className="searchButton">
+          <FontAwesomeIcon icon={faSearch} />
+        </button>
       </div>
+
       <div className="movie-list">{list} </div>
       {paginationInfo.totalData <= musics.length ? null : (
         <button
@@ -41,7 +50,7 @@ const CardGrid = ({
           }}
           className="btn-loadmore"
         >
-          {musicLoading ? "LOAD MORE..." : "LOAD MORE"}
+          LOAD MORE
         </button>
       )}
     </div>
