@@ -16,7 +16,7 @@ import {
 //Get All Music
 export const getMusicAll = (page) => async (dispatch) => {
   try {
-    let res = await API.get(`music?page=${page}&limit=12`);
+    let res = await API.get(`music?page=${page}&limit=18`);
     dispatch({
       type: GET_MUSIC_ALL,
       payload: res.data.data,
@@ -35,7 +35,7 @@ export const getMusicAll = (page) => async (dispatch) => {
 
 export const loadMore = (page) => async (dispatch) => {
   try {
-    let res = await API.get(`music?page=${page}&limit=12`);
+    let res = await API.get(`music?page=${page}&limit=18`);
     dispatch({
       type: LOAD_MORE_MUSIC,
       payload: res.data.data,
