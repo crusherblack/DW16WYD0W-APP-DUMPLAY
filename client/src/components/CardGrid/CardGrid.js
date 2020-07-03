@@ -46,7 +46,7 @@ const CardGrid = ({
       {paginationInfo.totalData <= musics.length ? null : (
         <button
           onClick={() => {
-            loadMore(paginationInfo.currentPage + 1);
+            loadMore(paginationInfo.currentPage + 1, queryTitle);
           }}
           className="btn-loadmore"
         >
