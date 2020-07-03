@@ -5,17 +5,17 @@ import CardGrid from "../components/CardGrid/CardGrid";
 import MusicPlayer from "../components/MusicPlayer/MusicPlayer";
 
 import { connect } from "react-redux";
-import { getMusicAll } from "../redux/actions/music";
+import { getMusicAll, loadMore } from "../redux/actions/music";
 import PropTypes from "prop-types";
 
 import Loader from "../components/Loader/Loader";
 
 const Home = ({
   getMusicAll,
-  music: { musicAll, paginationInfo },
+  loadMore,
+  music: { musicAll, paginationInfo, loading: musicLoading },
   auth: { isAuthenticated, user, loading },
 }) => {
-  const [pageNow, setPageNow] = useState(1);
   const [playIndex, setPlayIndex] = useState(0);
   const [loadingSkeleton, setLoadingSkeleton] = useState(true);
 
@@ -28,8 +28,8 @@ const Home = ({
   }, []);
 
   useEffect(() => {
-    getMusicAll(pageNow);
-  }, [getMusicAll, pageNow]);
+    getMusicAll(1);
+  }, []);
 
   const newAuth = { isAuthenticated, loading };
 
@@ -46,9 +46,8 @@ const Home = ({
         setPlayIndex={setPlayIndex}
         playIndex={playIndex}
         auth={newAuth}
-        setPageNow={setPageNow}
-        pageNow={pageNow}
         paginationInfo={paginationInfo}
+        loadMore={loadMore}
       />
 
       {user === null ? null : (isAuthenticated && user.subscribe) ||
@@ -74,4 +73,4 @@ const mapStateToProps = (state) => ({
   auth: state.auth,
 });
 
-export default connect(mapStateToProps, { getMusicAll })(Home);
+export default connect(mapStateToProps, { getMusicAll, loadMore })(Home);

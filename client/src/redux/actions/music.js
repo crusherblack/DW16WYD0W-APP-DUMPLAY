@@ -10,14 +10,34 @@ import {
   GET_ARTIS_ALL,
   GET_ARTIS_FAIL,
   PAGINATION_INFO,
+  LOAD_MORE_MUSIC,
 } from "./types";
 
 //Get All Music
 export const getMusicAll = (page) => async (dispatch) => {
   try {
-    let res = await API.get(`music?page=${page}&limit=6`);
+    let res = await API.get(`music?page=${page}&limit=12`);
     dispatch({
       type: GET_MUSIC_ALL,
+      payload: res.data.data,
+    });
+    dispatch({
+      type: PAGINATION_INFO,
+      payload: res.data.paginationInfo,
+    });
+  } catch (err) {
+    dispatch({
+      type: GET_MUSIC_FAIL,
+      payload: err.response.data.error.message,
+    });
+  }
+};
+
+export const loadMore = (page) => async (dispatch) => {
+  try {
+    let res = await API.get(`music?page=${page}&limit=12`);
+    dispatch({
+      type: LOAD_MORE_MUSIC,
       payload: res.data.data,
     });
     dispatch({
@@ -54,7 +74,6 @@ export const add_Music = (payload, redirect) => async (dispatch) => {
     let res = await API.post(`/music`, formData, config);
     dispatch({
       type: ADD_MUSIC_SUCCESS,
-      payload: res.data.data,
     });
     redirect();
   } catch (err) {

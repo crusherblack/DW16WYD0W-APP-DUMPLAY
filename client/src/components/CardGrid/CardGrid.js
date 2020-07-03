@@ -13,6 +13,8 @@ const CardGrid = ({
   setPageNow,
   pageNow,
   paginationInfo,
+  musicLoading,
+  loadMore,
 }) => {
   const list = musics.map((movie, index) => (
     <MovieCard
@@ -32,12 +34,14 @@ const CardGrid = ({
         <p> {title} </p>
       </div>
       <div className="movie-list">{list} </div>
-      {paginationInfo.totalData === musics.length ? null : (
+      {paginationInfo.totalData <= musics.length ? null : (
         <button
-          onClick={() => setPageNow(pageNow + 1)}
+          onClick={() => {
+            loadMore(paginationInfo.currentPage + 1);
+          }}
           className="btn-loadmore"
         >
-          LOAD MORE
+          {musicLoading ? "LOAD MORE..." : "LOAD MORE"}
         </button>
       )}
     </div>

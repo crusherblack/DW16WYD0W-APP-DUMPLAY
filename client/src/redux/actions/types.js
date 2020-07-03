@@ -14,6 +14,7 @@ export const GET_ARTIS_FAIL = "GET_ARTIS_FAIL";
 export const PAGINATION_INFO = "PAGINATION_INFO";
 
 export const ERROR = "ERROR";
+export const LOAD_MORE_MUSIC = "LOAD_MORE_MUSIC";
 
 //Login & Auth types
 export const SET_ALERT = "SET_ALERT";

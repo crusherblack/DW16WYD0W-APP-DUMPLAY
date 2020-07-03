@@ -8,6 +8,7 @@ import {
   GET_ARTIS_ALL,
   GET_ARTIS_FAIL,
   PAGINATION_INFO,
+  LOAD_MORE_MUSIC,
 } from "../actions/types";
 
 const initialState = {
@@ -17,6 +18,7 @@ const initialState = {
   error: "",
   alert: "",
   paginationInfo: null,
+  currentPage: 1,
 };
 
 export default function (state = initialState, actions) {
@@ -24,6 +26,12 @@ export default function (state = initialState, actions) {
 
   switch (type) {
     case GET_MUSIC_ALL:
+      return {
+        ...state,
+        musicAll: payload,
+        loading: false,
+      };
+    case LOAD_MORE_MUSIC:
       return {
         ...state,
         musicAll: [...state.musicAll, ...payload],
@@ -51,6 +59,7 @@ export default function (state = initialState, actions) {
       return {
         ...state,
         alert: "Music has been successfully added",
+        //musicAll: [payload, ...state.musicAll],
         loading: false,
       };
     case GET_MUSIC_FAIL:
