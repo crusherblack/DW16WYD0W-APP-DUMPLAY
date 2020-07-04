@@ -19,6 +19,7 @@ const CardGrid = ({
 	const lengthData = 12;
 	const lengthLoadMore = lengthData - 1;
 	const [ loadMoreIndex, setLoadMoreIndex ] = useState(lengthLoadMore);
+
 	const list = musics.map((movie, index) => (
 		<div key={index}>
 			<MovieCard
@@ -29,6 +30,7 @@ const CardGrid = ({
 				playIndex={playIndex}
 				auth={auth}
 			/>
+
 			{index === loadMoreIndex && (
 				<Waypoint
 					onEnter={() => {
@@ -49,7 +51,12 @@ const CardGrid = ({
 					className="searchTerm"
 					placeholder="Cari lagu favorite anda disini..."
 					value={queryTitle}
-					onChange={(e) => setQueryTitle(e.target.value)}
+					onChange={(e) => {
+						setTimeout(() => {
+							setLoadMoreIndex(lengthLoadMore);
+						}, 300);
+						setQueryTitle(e.target.value);
+					}}
 				/>
 				<button type="submit" className="searchButton">
 					<FontAwesomeIcon icon={faSearch} />
