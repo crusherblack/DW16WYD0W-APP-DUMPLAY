@@ -13,7 +13,7 @@ import {
 	LOAD_MORE_MUSIC
 } from './types';
 
-const limit = 18;
+const limit = 12;
 //Get All Music
 export const getMusicAll = (page, title) => async (dispatch) => {
 	try {
