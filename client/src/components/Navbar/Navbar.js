@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './Navbar.css';
 
 import logo from '../../img/logoplay.png';
@@ -15,6 +15,16 @@ const Navbar = ({
 	showModalRegister,
 	auth: { isAuthenticated, loading, user }
 }) => {
+	const [ backround, setBackround ] = useState('transparent');
+
+	useEffect(() => {
+		document.addEventListener('scroll', () => {
+			const backgroundcolor = window.scrollY < 70 ? 'transparent' : 'black';
+
+			setBackround(backgroundcolor); //auto navbar color
+		});
+	}, []);
+
 	let history = useHistory();
 
 	const [ isProfileDropdown, setProfileDropdown ] = useState(false);
@@ -28,7 +38,12 @@ const Navbar = ({
 	};
 
 	return (
-		<div className="navbar">
+		<div
+			className="navbar"
+			style={{
+				background: backround
+			}}
+		>
 			<div className="logo">
 				<img
 					src={logo}

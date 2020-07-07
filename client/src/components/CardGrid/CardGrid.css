@@ -71,7 +71,7 @@
 
 .searchTerm {
   width: 100%;
-  border: 3px solid #fff;
+  border: 3px solid rgb(66, 65, 65);
   border-right: none;
   padding: 5px;
   font-size: 24px;
