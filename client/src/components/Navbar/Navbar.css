@@ -41,27 +41,34 @@ a {
     color: #d8d8d8;
   }
 
-  .profile {
-    position: absolute;
-    right: 27px;
-    display: block;
-    margin-top: 12px;
-  }
-
-  .profile img {
-    width: 40px;
-    height: 40px;
-    border: 2px solid #ffffff;
-    border-radius: 50px;
-    cursor: pointer;
-  }
-
   .button-login-register {
     position: absolute;
     right: 2%;
     display: block;
     top: 23%;
   }
+}
+
+.profile {
+  position: absolute;
+  right: 27px;
+  display: block;
+  margin-top: 12px;
+}
+
+.profile img {
+  width: 40px;
+  height: 40px;
+  border: 2px solid #ffffff;
+  border-radius: 50px;
+  cursor: pointer;
+}
+
+.button-login-register {
+  position: absolute;
+  right: 2%;
+  display: block;
+  top: 23%;
 }
 
 .logo {
@@ -74,6 +81,13 @@ a {
 .logo img {
   width: 190px;
   height: 40px;
+}
+
+@media only screen and (max-width: 760px) {
+  .logo img {
+    width: 45px;
+    height: 40px;
+  }
 }
 
 .btn-light {
@@ -91,11 +105,6 @@ a {
   margin-right: 15px;
 }
 
-.btn-light:hover {
-  background: #ffffff;
-  border: 1px solid #360204;
-}
-
 .btn-red {
   width: 100px;
   height: 30px;
@@ -108,6 +117,11 @@ a {
   cursor: pointer;
   margin-top: 4px;
   display: inline-block;
+}
+
+.btn-light:hover {
+  background: #ffffff;
+  border: 1px solid #360204;
 }
 
 .btn-red:hover {

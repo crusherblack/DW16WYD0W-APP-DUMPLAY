@@ -1,101 +1,104 @@
-import React, { useState, useEffect } from 'react';
-import './Navbar.css';
+import React, { useState, useEffect } from "react";
+import "./Navbar.css";
 
-import logo from '../../img/logoplay.png';
-import person from '../../img/person.jpg';
-import ProfileDropdown from '../Profile/ProfileDropdown';
+import logo from "../../img/logoplay.png";
+import logoSmall from "../../img/logoplaysmall.png";
+import person from "../../img/person.jpg";
+import ProfileDropdown from "../Profile/ProfileDropdown";
 
-import { connect } from 'react-redux';
-import PropTypes from 'prop-types';
+import { useMediaQuery } from "react-responsive";
 
-import { useHistory } from 'react-router-dom';
+import { connect } from "react-redux";
+import PropTypes from "prop-types";
+
+import { useHistory } from "react-router-dom";
 
 const Navbar = ({
-	showModalLogin,
-	showModalRegister,
-	auth: { isAuthenticated, loading, user }
+  showModalLogin,
+  showModalRegister,
+  auth: { isAuthenticated, loading, user },
 }) => {
-	const [ backround, setBackround ] = useState('transparent');
+  const [backround, setBackround] = useState("transparent");
 
-	useEffect(() => {
-		document.addEventListener('scroll', () => {
-			const backgroundcolor = window.scrollY < 70 ? 'transparent' : 'black';
+  const isMobile = useMediaQuery({ query: "(max-width: 760px)" });
 
-			setBackround(backgroundcolor); //auto navbar color
-		});
-	}, []);
+  useEffect(() => {
+    document.addEventListener("scroll", () => {
+      const backgroundcolor = window.scrollY < 70 ? "transparent" : "black";
 
-	let history = useHistory();
+      setBackround(backgroundcolor); //auto navbar color
+    });
+  }, []);
 
-	const [ isProfileDropdown, setProfileDropdown ] = useState(false);
+  let history = useHistory();
 
-	const showProfileDropdown = () => {
-		setProfileDropdown(!isProfileDropdown);
-	};
+  const [isProfileDropdown, setProfileDropdown] = useState(false);
 
-	const openHome = () => {
-		history.push(`/`);
-	};
+  const showProfileDropdown = () => {
+    setProfileDropdown(!isProfileDropdown);
+  };
 
-	return (
-		<div
-			className="navbar"
-			style={{
-				background: backround
-			}}
-		>
-			<div className="logo">
-				<img
-					src={logo}
-					alt="dumbflix"
-					style={{ cursor: 'pointer' }}
-					onClick={() => openHome()}
-				/>
-			</div>
+  const openHome = () => {
+    history.push(`/`);
+  };
 
-			{!isAuthenticated && (
-				<div className="button-login-register">
-					<button className="btn-light" onClick={() => showModalRegister()}>
-						Register
-					</button>
-					<button className="btn-red" onClick={() => showModalLogin()}>
-						Login
-					</button>
-				</div>
-			)}
+  return (
+    <div
+      className="navbar"
+      style={{
+        background: backround,
+      }}
+    >
+      <div className="logo">
+        <img
+          src={isMobile ? logoSmall : logo}
+          alt="dumbflix"
+          style={{ cursor: "pointer" }}
+          onClick={() => openHome()}
+        />
+      </div>
 
-			{user === null || loading ? (
-				<div>Loading...</div>
-			) : (
-				isAuthenticated && (
-					<div className="profile">
-						<img
-							src={
-								user.profile === '' ? (
-									person
-								) : (
-									`http://localhost:5000/uploads/${user.profile}`
-								)
-							}
-							alt="person"
-							onClick={() => showProfileDropdown()}
-						/>
-					</div>
-				)
-			)}
-			{isProfileDropdown && (
-				<ProfileDropdown showProfileDropdown={showProfileDropdown} />
-			)}
-		</div>
-	);
+      {!isAuthenticated && (
+        <div className="button-login-register">
+          <button className="btn-light" onClick={() => showModalRegister()}>
+            Register
+          </button>
+          <button className="btn-red" onClick={() => showModalLogin()}>
+            Login
+          </button>
+        </div>
+      )}
+
+      {user === null || loading ? (
+        <div>Loading...</div>
+      ) : (
+        isAuthenticated && (
+          <div className="profile">
+            <img
+              src={
+                user.profile === ""
+                  ? person
+                  : `http://localhost:5000/uploads/${user.profile}`
+              }
+              alt="person"
+              onClick={() => showProfileDropdown()}
+            />
+          </div>
+        )
+      )}
+      {isProfileDropdown && (
+        <ProfileDropdown showProfileDropdown={showProfileDropdown} />
+      )}
+    </div>
+  );
 };
 
 Navbar.propTypes = {
-	auth: PropTypes.object.isRequired
+  auth: PropTypes.object.isRequired,
 };
 
 const mapStateToProps = (state) => ({
-	auth: state.auth
+  auth: state.auth,
 });
 
 export default connect(mapStateToProps, {})(Navbar);

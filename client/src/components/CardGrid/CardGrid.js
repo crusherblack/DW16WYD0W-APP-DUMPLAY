@@ -1,70 +1,70 @@
-import React, { useState } from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSearch } from '@fortawesome/free-solid-svg-icons';
-import { Waypoint } from 'react-waypoint';
+import React, { useState } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faSearch } from "@fortawesome/free-solid-svg-icons";
+import { Waypoint } from "react-waypoint";
 
-import MovieCard from '../MusicCard/MusicCard';
-import './CardGrid.css';
+import MovieCard from "../MusicCard/MusicCard";
+import "./CardGrid.css";
 
 const CardGrid = ({
-	musics,
-	setPlayIndex,
-	playIndex,
-	auth,
-	paginationInfo,
-	queryTitle,
-	setQueryTitle,
-	loadMore
+  musics,
+  setPlayIndex,
+  playIndex,
+  auth,
+  paginationInfo,
+  queryTitle,
+  setQueryTitle,
+  loadMore,
 }) => {
-	const lengthData = 12;
-	const lengthLoadMore = lengthData - 1;
-	const [ loadMoreIndex, setLoadMoreIndex ] = useState(lengthLoadMore);
+  const lengthData = 12;
+  const lengthLoadMore = lengthData - 1;
+  const [loadMoreIndex, setLoadMoreIndex] = useState(lengthLoadMore);
 
-	const list = musics.map((movie, index) => (
-		<div key={index}>
-			<MovieCard
-				movie={movie}
-				key={movie.id}
-				setPlayIndex={setPlayIndex}
-				index={index}
-				playIndex={playIndex}
-				auth={auth}
-			/>
+  const list = musics.map((movie, index) => (
+    <div key={index}>
+      <MovieCard
+        movie={movie}
+        key={movie.id}
+        setPlayIndex={setPlayIndex}
+        index={index}
+        playIndex={playIndex}
+        auth={auth}
+      />
 
-			{index === loadMoreIndex && (
-				<Waypoint
-					onEnter={() => {
-						loadMore(paginationInfo.currentPage + 1, queryTitle);
-						setLoadMoreIndex(loadMoreIndex + lengthLoadMore);
-						console.log(index);
-					}}
-				/>
-			)}
-		</div>
-	));
+      {index === loadMoreIndex && (
+        <Waypoint
+          onEnter={() => {
+            loadMore(paginationInfo.currentPage + 1, queryTitle);
+            setLoadMoreIndex(loadMoreIndex + lengthLoadMore);
+            /* console.log(index); */
+          }}
+        />
+      )}
+    </div>
+  ));
 
-	return (
-		<div className="movie-grid">
-			<div className="search">
-				<input
-					type="text"
-					className="searchTerm"
-					placeholder="Cari lagu favorite anda disini..."
-					value={queryTitle}
-					onChange={(e) => {
-						setTimeout(() => {
-							setLoadMoreIndex(lengthLoadMore);
-						}, 300);
-						setQueryTitle(e.target.value);
-					}}
-				/>
-				<button type="submit" className="searchButton">
-					<FontAwesomeIcon icon={faSearch} />
-				</button>
-			</div>
+  return (
+    <div className="movie-grid">
+      <div className="search">
+        <input
+          type="text"
+          className="searchTerm"
+          placeholder="Cari lagu favorite anda disini..."
+          value={queryTitle}
+          onChange={(e) => {
+            setTimeout(() => {
+              setLoadMoreIndex(lengthLoadMore);
+            }, 300);
+            setQueryTitle(e.target.value);
+          }}
+        />
+        <button type="submit" className="searchButton">
+          <FontAwesomeIcon icon={faSearch} />
+        </button>
+      </div>
 
-			<div className="movie-list">{list} </div>
-			{/* 	{paginationInfo.totalData <= musics.length ? null : (
+      <div className="movie-list">{list} </div>
+      {/* 	{paginationInfo.totalData <= musics.length ? null : (
 				<button
 					onClick={() => {
 						loadMore(paginationInfo.currentPage + 1, queryTitle);
@@ -74,8 +74,8 @@ const CardGrid = ({
 					LOAD MORE
 				</button>
 			)} */}
-		</div>
-	);
+    </div>
+  );
 };
 
 export default CardGrid;
