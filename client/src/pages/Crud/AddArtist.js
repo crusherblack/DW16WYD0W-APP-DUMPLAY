@@ -79,6 +79,9 @@ const AddArtist = ({ add_Artist, music: { alert } }) => {
                 onChange(e);
               }}
               required
+              style={{
+                marginTop: "18px",
+              }}
             >
               <option value="">Type</option>
               <option value="Solo">Solo</option>
