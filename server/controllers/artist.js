@@ -37,7 +37,7 @@ exports.getArtist = async (req, res) => {
 exports.addArtist = async (req, res) => {
   try {
     const schema = Joi.object({
-      name: Joi.string().min(3).required(),
+      name: Joi.string().required(),
       old: Joi.number().required(),
       type: Joi.string().required(),
       startCareer: Joi.date().required(),

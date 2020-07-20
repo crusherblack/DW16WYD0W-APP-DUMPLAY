@@ -29,7 +29,6 @@ const AddArtist = ({ add_Artist, music: { alert } }) => {
     setFormData({
       name: "",
       old: "",
-      type: "",
       startCareer: "",
     });
   };
@@ -84,8 +83,13 @@ const AddArtist = ({ add_Artist, music: { alert } }) => {
               }}
             >
               <option value="">Type</option>
-              <option value="Solo">Solo</option>
-              <option value="Group">Group</option>
+              <option value="Jazz">Jazz</option>
+              <option value="Rock">Rock</option>
+              <option value="K-POP">K-POP</option>
+              <option value="Pop">Pop</option>
+              <option value="DJ">DJ</option>
+              <option value="Dangdut">Dangdut</option>
+              <option value="Raper">Raper</option>
             </select>
           </div>
           <div className="form-group">
