@@ -10,7 +10,7 @@
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
     "@u-wave/react-youtube": "^0.7.1",
-    "axios": "^0.19.2",
+    "axios": "^0.21.1",
     "dayjs": "^1.8.28",
     "moment": "^2.26.0",
     "nuka-carousel": "^4.7.0",
